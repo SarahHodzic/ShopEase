@@ -137,7 +137,7 @@ Model sloj predstavlja poslovnu logiku i podatke aplikacije, uključujući:
 ### Ostalo
 
 - **network paket:**
-  - **StoreApiService.kt:** Definira API servis za dohvaćanje podataka o artiklima.
+  - **StoreApiService.kt:** Definira API servis za mrežne operacije, kao što su dohvaćanje podataka o artiklima.
 - **navigation paket:**
   - **NavigationDestination.kt:** Interface koji definira navigacijske destinacije.
   - **NavGraph.kt:** Definira navigacijsku grafu aplikacije.
