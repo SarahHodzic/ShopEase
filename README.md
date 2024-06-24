@@ -146,38 +146,53 @@ Model sloj predstavlja poslovnu logiku i podatke aplikacije, uključujući:
 
 #### data Paket
 
-- **ArticleDao:** Metode za pristup bazi podataka artikala.
-- **ArticleDatabase:** Konfiguracija baze podataka.
-- **ArticleItem:** Entitet artikla u bazi podataka.
-- **ArticleRepository:** Apstrakcija za pristup podacima artikala.
+- **ArticleDao:**
+- Definira metode za pristup bazi podataka artikala. Obično uključuje metode za umetanje, brisanje, ažuriranje i dohvaćanje artikala.
+- **ArticleDatabase:**
+- Konfigurira bazu podataka koristeći Room ORM. Ovdje se obično definiraju entiteti i verzija baze podataka.
+- **ArticleItem:** 
+- Predstavlja entitet artikla u bazi podataka. Sadrži atribute kao što su naslov, cijena, slika, kategorija i ocjena artikla.
+- **ArticleRepository:**
+- Služi kao apstrakcijski sloj između ViewModel-a i DAO-a. Pruža metode za dohvaćanje, dodavanje, brisanje i ažuriranje artikala te za dohvaćanje cijene svih artikala.
 
 #### model Paket
 
-- **Article:** Podatkovni model artikla.
+- **Article:**
+- Definira podatkovni model artikla koji se koristi u aplikaciji. Obično sadrži atribute kao što su naslov, cijena, opis, slika, kategorija i ocjena.
 
 ### ViewModel Sloj
 
 #### ui.theme Paket
 
-- **ArticleViewModel:** Upravlja logikom i podacima vezanim za artikle.
-- **ArticleViewModelFactory:** Kreira ArticleViewModel sa potrebnim ovisnostima.
-- **HomeViewModel:** Upravlja podacima za početni zaslon aplikacije.
+- **ArticleViewModel:**
+- Upravlja podacima i poslovnom logikom vezanom za artikle. Sadrži metode za dohvaćanje artikala, dodavanje artikala u košaricu, brisanje artikala i ažuriranje ukupne cijene.
+- **ArticleViewModelFactory:**
+- Pruža instancu ArticleViewModel s potrebnim ovisnostima, poput ArticleRepository.
+- **HomeViewModel:**
+- Upravlja podacima za početni zaslon aplikacije. Sadrži metode za dohvaćanje artikala po kategorijama i upravljanje stanjem korisničkog sučelja (učitavanje, uspjeh, greška).
 
 ### View Sloj
 
 #### ui.theme Paket
 
-- **ArticleDetailsScreen.kt:** Prikazuje detalje odabranog artikla.
-- **BuyScreen.kt:** Zaslon za kupovinu, uključuje prikaz artikala u košarici i ukupnu cijenu.
-- **CategoryScreen.kt:** Prikazuje kategorije artikala.
-- **HomeScreen.kt:** Prikazuje početni zaslon aplikacije.
-- **MainActivity:** Glavna aktivnost koja pokreće aplikaciju.
-- **NavGraph.kt:** Definira navigacijsku grafu aplikacije.
+- **ArticleDetailsScreen.kt:**
+- Prikazuje detalje odabranog artikla. Omogućava dodavanje artikla u košaricu i prikazuje obavijest o uspjehu dodavanja.
+- **BuyScreen.kt:**
+- Prikazuje zaslon za kupovinu, obično uključuje prikaz artikala u košarici i ukupnu cijenu.
+- **CategoryScreen.kt:**
+- Prikazuje različite kategorije artikala koje korisnik može pregledavati.
+- **HomeScreen.kt:**
+- Prikazuje početni zaslon aplikacije, obično uključuje popis artikala ili kategorija za pregledavanje.
+- **MainActivity:**
+- Glavna aktivnost koja pokreće aplikaciju i postavlja početnu navigaciju.
+- **NavGraph.kt:**
+- Definira navigacijsku grafu aplikacije, uključujući sve moguće rute i destinacije unutar aplikacije.
 
 ### Ostalo
 
 - **network Paket**
-  - **StoreApiService.kt:** Definira API servis za mrežne operacije.
+  - **StoreApiService.kt:**
+  - Definira API servis za mrežne operacije. Sadrži metode za dohvaćanje podataka o artiklima iz udaljenog izvora (API-a).
 
 ### ArticleDao
 
