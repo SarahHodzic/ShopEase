@@ -109,3 +109,157 @@ Korištena je MVVM (Model-View-ViewModel) arhitektura i Jetpack Compose bibliote
 1. View (Pogled)
 2. ViewModel
 3. Model
+
+### View Sloj
+
+View sloj sadrži sve UI komponente koje su izgrađene koristeći Jetpack Compose. Ovaj sloj je odgovoran za prikazivanje podataka i prikupljanje korisničkih interakcija. Ekrani koji spadaju u ovaj sloj su BuyScreen, HomeScreen, CategoryScreen, ArticleDetailsScreen.
+
+### ViewModel
+
+ViewModel sloj je odgovoran za upravljanje logikom aplikacije i poslovnim podacima. ViewModel komunicira sa Model slojem za dohvaćanje podataka i s View slojem za ažuriranje UI-ja. U aplikaciji ShopEase, ViewModel uključuje:
+
+- **ArticleViewModel:** Upravlja artiklima, uključujući dohvaćanje, sortiranje, dodavanje i brisanje artikala.
+- **HomeViewModel:** Upravlja stanjem prikaza početnog zaslona aplikacije i prikupljanjem artikala iz različitih kategorija.
+
+### Model
+
+Model sloj predstavlja poslovnu logiku i podatke aplikacije, uključujući:
+
+- **data paket:**
+  - **ArticleDao:** DAO za pristup bazi podataka artikala.
+  - **ArticleDatabase:** Konfiguracija baze podataka.
+  - **ArticleItem:** Klasa koja predstavlja stavku artikla.
+  - **ArticleRepository:** Repozitorij za apstrakciju pristupa podacima.
+
+- **model paket:**
+  - **Article.kt:** Klasa koja definira podatkovni model artikla.
+
+### Ostalo
+
+- **network paket:**
+  - **StoreApiService.kt:** Definira API servis za dohvaćanje podataka o artiklima.
+- **navigation paket:**
+  - **NavigationDestination.kt:** Interface koji definira navigacijske destinacije.
+  - **NavGraph.kt:** Definira navigacijsku grafu aplikacije.
+
+## Opis funkcionalnosti pojedinačnih klasa
+
+#### data Paket
+
+- **ArticleDao:** Metode za pristup bazi podataka artikala.
+- **ArticleDatabase:** Konfiguracija baze podataka.
+- **ArticleItem:** Entitet artikla u bazi podataka.
+- **ArticleRepository:** Apstrakcija za pristup podacima artikala.
+
+#### model Paket
+
+- **Article:** Podatkovni model artikla.
+
+### ViewModel Sloj
+
+#### ui.theme Paket
+
+- **ArticleViewModel:** Upravlja logikom i podacima vezanim za artikle.
+- **ArticleViewModelFactory:** Kreira ArticleViewModel sa potrebnim ovisnostima.
+- **HomeViewModel:** Upravlja podacima za početni zaslon aplikacije.
+
+### View Sloj
+
+#### ui.theme Paket
+
+- **ArticleDetailsScreen.kt:** Prikazuje detalje odabranog artikla.
+- **BuyScreen.kt:** Zaslon za kupovinu, uključuje prikaz artikala u košarici i ukupnu cijenu.
+- **CategoryScreen.kt:** Prikazuje kategorije artikala.
+- **HomeScreen.kt:** Prikazuje početni zaslon aplikacije.
+- **MainActivity:** Glavna aktivnost koja pokreće aplikaciju.
+- **NavGraph.kt:** Definira navigacijsku grafu aplikacije.
+
+### Ostalo
+
+- **network Paket**
+  - **StoreApiService.kt:** Definira API servis za mrežne operacije.
+
+### ArticleDao
+
+- **Funkcije:**
+  - `insertItem(article: ArticleItem)`: Umeće novi artikal u bazu podataka.
+  - `deleteItem(article: ArticleItem)`: Briše određeni artikal iz baze podataka.
+  - `getAllItems()`: Dohvaća sve artikle iz baze podataka.
+  - `getAllItemsAsc()`: Dohvaća sve artikle iz baze podataka sortirane po cijeni uzlazno.
+  - `getAllItemsDesc()`: Dohvaća sve artikle iz baze podataka sortirane po cijeni silazno.
+  - `getPrice()`: Dohvaća ukupnu cijenu svih artikala u bazi podataka.
+
+## Opis opštih koncepata Android frameworka
+
+Opšti koncepti Android frameworka obuhvataju osnovne principe i komponente koje čine strukturu Android operativnog sistema i omogućavaju razvoj mobilnih aplikacija.
+
+- **Aktivnosti (Activities):** 
+  Koriste se za predstavljanje korisničkog interfejsa na ekranu i za interakciju sa korisnikom. U projektu su korištene aktivnosti poput `BuyScreen` i `HomeScreen` kako bi se prikazale odgovarajuće stranice aplikacije.
+
+- **ViewModel:**
+  ViewModel je arhitekturni obrazac koji se koristi za čuvanje i upravljanje podacima koji su povezani sa UI komponentama. `HomeViewModel` u projektu čuva logiku i stanje igre.
+
+- **Rasporedi (Layouts):**
+  Layouti definišu strukturu i izgled korisničkog interfejsa, uključujući poziciju i stil elemenata kao što su dugmad, polja za unos teksta, i slično.
+
+- **Intenti (Intents):**
+  Intenti se koriste za pokretanje komponenti aplikacije, slanje i primanje podataka između komponenti, kao i za pokretanje aktivnosti iz različitih dijelova aplikacije. U projektu se koristi Intent za dijeljenje artikala putem drugih aplikacija.
+
+- **Navigacija (Navigation):**
+  Navigacija se koristi za upravljanje prelaskom između različitih ekrana ili dijelova aplikacije. U projektu se koristi `NavHost` sa definisanim rutama (composable) kako bi se omogućilo navigiranje između početne stranice (`HomeScreen`) i ostalih stranica (`CategoryScreen` npr.).
+
+- **Lokalizacija (Localization):**
+  Proces prilagođavanja aplikacije različitim jezicima, regionalnim podešavanjima i kulturnim kontekstima kako bi se korisnicima pružilo lokalizovano iskustvo. Uključuje prevođenje tekstova, prilagođavanje formata datuma, vremena i valuta, kao i prilagođavanje drugih aspekata aplikacije prema jezičkim preferencama korisnika.
+
+- **Životni ciklus (Lifecycle):**
+  Odnosi se na seriju stanja koje aktivnost ili fragment može prolaziti tokom svog postojanja, od stvaranja do uništenja. Ovo je ključni koncept jer omogućava Android programerima da upravljaju ponašanjem aplikacije u različitim situacijama, kao što su promjene konfiguracije uređaja, prelazak između aktivnosti i fragmenata, kao i promjene u životnom ciklusu samog Android sistema.
+
+
+### Room
+
+Room je objektno-relacijski okvir (ORM) za Android koji pruža apstrakcijski sloj preko SQLite baze podataka, omogućujući jednostavnije i sigurnije upravljanje lokalnim podacima u Android aplikacijama. Osnovni koncepti i komponente Room-a uključuju:
+
+- **Entity:**
+- Entitet predstavlja tablicu u bazi podataka. Svaka instanca entiteta odgovara retku u tablici.
+- Definira se pomoću @Entity anotacije.
+
+- **DAO (Data Access Object):**
+•	DAO je sučelje koje sadrži metode za pristup bazi podataka. Koristi anotacije za definiranje SQL upita.
+•	Definira se pomoću @Dao anotacije.
+
+- **Database:**
+•  Klasa baze podataka predstavlja SQLite bazu podataka i djeluje kao glavna pristupna tačka za vezu s podacima.
+•	Definira se pomoću @Database anotacije.
+
+
+### API
+
+API (Application Programming Interface) je skup definicija i protokola koji omogućuju različitim softverskim komponentama da međusobno komuniciraju. U kontekstu weba, API omogućuje klijentskim aplikacijama da komuniciraju s poslužiteljskim aplikacijama putem HTTP zahtjeva.
+Retrofit je popularna biblioteka za Android koja olakšava rad s API-ima. Koristi se za stvaranje HTTP zahtjeva i upravljanje odgovorima na vrlo jednostavan način.
+
+Komponente i funkcionalnosti koje su definisane
+1. BASE_URL
+•	BASE_URL definira osnovnu URL adresu API-ja. U ovom slučaju, to je https://fakestoreapi.com. Svi HTTP zahtjevi koje aplikacija šalje bit će upućeni na ovu baznu adresu.
+2. Retrofit.Builder
+•	Retrofit.Builder je graditelj za stvaranje Retrofit instance. Ovdje se konfigurira Retrofit objekt pomoću addConverterFactory i baseUrl metoda.
+•	addConverterFactory koristi Json.asConverterFactory za dodavanje konvertera koji omogućuje serijalizaciju i deserializaciju JSON objekata koristeći kotlinx.serialization.
+•	baseUrl postavlja osnovnu URL adresu za sve HTTP zahtjeve.
+
+
+### Repozitorijum
+
+Repzitorijum služi kao posrednik između aplikacije i baze podataka. On pruža apstrakciju preko operacija na podacima koje omogućavaju jednostavniji pristup i upravljanje podacima. Ključne prednosti korištenja repozitorija su:
+
+- **Apstrakcija Sloja za Pristup Podacima:** Repozitorijum izdvaja sloj za pristup podacima (DAO) iz logike aplikacije, čime se omogućava čistiji i modularniji kod.
+- **Jednostavnije Testiranje:** Koristeći repozitorijum, lakše je zameniti konkretne implementacije tokom testiranja, omogućavajući pisanje testova koji ne zavise od stvarne baze podataka.
+- **Centralizacija Poslovne Logike:** Logika vezana za manipulaciju podacima može biti centralizovana unutar repozitorijuma, što čini kod lakšim za održavanje.
+
+### Zaključak
+
+ShopEase pruža intuitivan i atraktivan korisnički interfejs koji olakšava korisnicima istraživanje i kupovinu različitih kategorija proizvoda. Korisnici mogu brzo navigirati između različitih kategorija poput svih proizvoda, elektronike, nakita te odjeće za muškarce i žene. Svaka kategorija predstavljena je kroz privlačnu karticu sa slikom i nazivom proizvoda, što omogućava korisnicima da brzo prepoznaju željenu kategoriju.
+Osim estetskog aspekta, aplikacija nudi i funkcionalnosti kao što su mogućnost direktnog pristupa detaljima proizvoda i njihovoj kupovini s jednim klikom. Svaka kategorija povezana je s odgovarajućim funkcionalnostima koje korisnicima omogućavaju da istraže više ili dodaju proizvode u košaricu za kupovinu.
+Dodatno, prilagodljivost aplikacije na različite orijentacije ekrana omogućava korisnicima ugodno iskustvo bez obzira na to koriste li uređaj u portretnom ili pejzažnom načinu.
+Ukupno gledano, ShopEase čini online kupovinu jednostavnom i privlačnom aktivnošću, pružajući korisnicima sve što im je potrebno za pregled, odabir i kupovinu proizvoda iz udobnosti njihovog doma ili bilo gdje drugdje.
+
+
+
