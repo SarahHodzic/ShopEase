@@ -1,6 +1,6 @@
-## DOKUMENTACIJA
+# DOKUMENTACIJA
 
-### Opis rada aplikacije
+## Opis rada aplikacije
 
 Aplikacija ShopEase je moderna Android aplikacija razvijena za pregled i kupovinu različitih proizvoda putem integracije s Web API-jem. Cilj aplikacije je pružiti korisnicima intuitivno iskustvo pri pregledu i kupovini proizvoda iz različitih kategorija.
 
@@ -56,8 +56,12 @@ Na početnom ekranu korisnici mogu pregledati različite kategorije proizvoda po
    - Prilagođava se kako bi korisnicima omogućio što jednostavnije i intuitivnije iskustvo pregledavanja proizvoda.
   
 All products kategorija:
-  ![image](https://github.com/SarahHodzic/ShopEase/assets/82335709/440ca03a-3a20-41ac-8965-e6182c6eac92)
+
+![image](https://github.com/SarahHodzic/ShopEase/assets/82335709/440ca03a-3a20-41ac-8965-e6182c6eac92)
+
+  
 Jewelery kategorija:
+
 ![image](https://github.com/SarahHodzic/ShopEase/assets/82335709/8f09da3d-9582-4789-846e-00b7904fdbdd)
 
 Aplikacija posjeduje pejzažni i portretni prikaz ekrana
@@ -71,6 +75,7 @@ Ovi načini rada prilagođavaju se orijentaciji uređaja i omogućuju korisnicim
 Ekran sa košaricom je ekran na kojem kupci mogu vidjeti šta su do sada odabrali kupiti. Sadrži dva dugmeta za sortiranje elemenata po cijeni, tekst u kojem je prikazana ukupna cijena artikala u košarici, dugme za kupovinu i prikaz svih artikala u vidu Card komponenata. Ukoliko se kupac predomisli i više ne želi kupiti određeni artikal, može pritisnuti na ikonu brisanja koja se nalazi na svakoj Card komponenti i time će se artikal ukloniti iz košarice. Kada je kupac zadovoljan artiklima, može kliknuti na dugme Kupi (Buy), nakon čega će se pojaviti AlertDialog s prikazom ukupne cijene, dugme za dijeljenje artikala koje kupac želi kupiti, kao i Cancel i Buy dugmad za odustajanje od kupovine ili potvrdu kupovine. Kada se klikne Buy dugme, svi artikli se brišu iz baze podataka i vraća se na početni ekran.
 
 ![image](https://github.com/SarahHodzic/ShopEase/assets/82335709/be8ccf50-5455-42fc-980c-990aa2206469)
+
 ![image](https://github.com/SarahHodzic/ShopEase/assets/82335709/7507177d-d967-4117-b623-9bea2c63b26d)
 
 
@@ -96,16 +101,11 @@ Ovaj ekran predstavlja "ArticleDetailsScreen" i prikazuje detalje o pojedinačno
 4. **Prilagođena Snackbar (CustomSnackbar):**
    - Prikazuje prilagođenu Snackbar obavijest.
 
-### Opis arhitekture aplikacije
+## Opis arhitekture aplikacije
 
 Korištena je MVVM (Model-View-ViewModel) arhitektura i Jetpack Compose biblioteke za izradu korisničkog interfejsa.
 
-#### Slojevi arhitekture:
-
-1. **View (Pogled):**
-   - View sloj sadrži sve UI komponente koje su izgrađene koristeći Jetpack Compose.
-   - Ovaj sloj je odgovoran za prikazivanje podataka i prikupljanje korisničkih interakcija.
-
-2. **ViewModel:**
-   - ViewModel sloj je odgovoran za upravljanje logikom aplikacije i poslovnim podacima.
-   - ViewModel komunicira sa Model slojem za dohvaćanje podataka i sa
+### Slojevi arhitekture:
+1. View (Pogled)
+2. ViewModel
+3. Model
