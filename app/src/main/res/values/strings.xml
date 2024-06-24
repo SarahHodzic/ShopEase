@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">ShopEase</string>
+    <string name="back_button">Back</string>
+    <string name="loading">Loading</string>
+    <string name="loading_failed">Failed to load</string>
+    <string name="shop_item_photo">Photo of a shop item</string>
+    <string name="mens_clothing">Men\'s Clothing</string>
+    <string name="jewelery">Jewelery</string>
+    <string name="womens_clothing">Women\'s Clothing</string>
+    <string name="electronics">Electronics</string>
+    <string name="all_products">All Products</string>
+    <string name="detail">Details</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="cart">Cart</string>
+    <string name="delete">Delete</string>
+    <string name="sort_low_to_high">Sort(Low to High)</string>
+    <string name="sort_high_to_low">Sort(High to Low)</string>
+    <string name="buy">Buy</string>
+    <string name="confirm_purchase">Confirm Purchase</string>
+    <string name="share">Share</string>
+    <string name="cancel">Cancel</string>
+    <string name="added_to_cart">Article added to cart</string>
+    <string name="tick_icon">Green tick icon</string>
+</resources>
